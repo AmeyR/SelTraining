@@ -16,10 +16,12 @@ import java.util.ArrayList;
  * Created by amey.rajapure on 3/3/2017.
  */
 public class getTestDataFromExcel {
-    int iRowNum, iLastRowNum, iLastColNum;
-    String sTCID;
+
 
     public ArrayList<String> getTestData(String sSheetName, String TestCaseId) throws IOException {
+        int iRowNum = 0, iLastRowNum, iLastColNum;
+        String sTCID;
+        
         FileInputStream fis = new FileInputStream("C:\\Users\\amey.rajapure\\Desktop\\TestData.xlsx");
         XSSFWorkbook wb = new XSSFWorkbook(fis);
         XSSFSheet ws = wb.getSheet(sSheetName);
