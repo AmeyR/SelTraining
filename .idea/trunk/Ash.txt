@@ -1,0 +1,50 @@
+Delete:----
+1) Gender
+2) Work Fax Number
+3) Institution Details
+
+020-66816200
+
+Edit:
+1) State - Rename label as State/Province
+
+
+Add:
+--1) Name of Institution (*) - Edit box
+2) Program ACGME number - Edit box
+--3) Country (*) - Dropdown
+--4) Address Line 1 (*) - Edit box
+--5) Address Line 2 - Edit box
+--6) City (*) - Edit box
+7) State/Province (*) - Drop down {Need to rename State to State/Province}
+--8) Zip Code/Postal Code (*) - Edit box
+9) Work Email (*) - Edit box
+10) Work Phone (*) - Edit box 
+--11) Institution Officer Name - Edit box
+--12) Institution Officer Email Address- Edit box
+13) Add New Document (*) - Document type
+--14) Paragraph
+
+.//*[@id='frmb-0-fld-1']/descendant::li/div[3]/div/div
+
+.//*[@class="cke_contents cke_reset"]
+
+
+
+	Thread.sleep(2000 );
+        Actions action = new Actions(driver);
+        //Thread.sleep(2000);
+        List<WebElement> MasterControlList = objMC.MasterControl_Items(driver,iFormNo);
+        WebElement MasterControl_Name = null;
+        //System.out.println("MasterControlList.size() = " +MasterControlList.size());
+
+        for(int i=0; i<MasterControlList.size(); i++){
+            String sMasterControlName = MasterControlList.get(i).getText();
+            if(sMasterControlName.equalsIgnoreCase(sMstrCntrlName)){
+                System.out.println(sMstrCntrlName+ " will be dragged and dropped.");
+                MasterControl_Name = MasterControlList.get(i);
+                action.dragAndDrop(MasterControl_Name,objMC.to_Destination(driver,iPageNo)).build().perform();
+                break;
+            }
+        }
+        Thread.sleep(3000);

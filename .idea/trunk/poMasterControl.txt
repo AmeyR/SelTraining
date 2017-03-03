@@ -1,0 +1,123 @@
+public class poMasterControl {
+
+    private static WebElement element = null;
+    private static List<WebElement> elementList;
+
+
+    //Add New Step link
+    public WebElement lnk_AddNewStep(WebDriver driver){
+        element = driver.findElement(By.id("add-page-tab"));
+        return element;
+    }
+
+    //New Step Tabs
+    public WebElement lbl_TabName(WebDriver driver, int tabNo){
+        String sElementXpath = ".//*[@id='tabs']/li[" +tabNo+ "]";
+        element = driver.findElement(By.xpath(sElementXpath));
+        //element = element.findElement(By.xpath("li"));
+        return element;
+    }
+
+    //Tab - Delete button
+    public WebElement btn_TabDelete(WebDriver driver, int tabNo){
+        String sElementXpath = ".//*[@id='tabs']/li[" +tabNo+ "]/a/span[2]";
+        element = driver.findElement(By.xpath(sElementXpath));
+        return element;
+    }
+
+    //Tab - Edit button
+    public WebElement btn_TabEdit(WebDriver driver, int tabNo){
+        String sElementXpath = ".//*[@id='tabs']/li[" +tabNo+ "]/a/span[3]";
+        element = driver.findElement(By.xpath(sElementXpath));
+        return element;
+    }
+
+    //Tab label popup - Label
+    public WebElement txt_TabLabelPopup_Label(WebDriver driver){
+        element = driver.findElement(By.xpath(".//div[contains(@id,\"ui-id-\") and contains(@class,\"popup-content-details\")]/div[2]/div[1]/div[2]/input"));
+        return element;
+    }
+
+    //Tab label popup - Save button
+    public WebElement btn_TabLabelPopup_Save(WebDriver driver){
+        element = driver.findElement(By.xpath(".//div[contains(@id,\"ui-id-\") and contains(@class,\"popup-content-details\")]/div[3]/div/input[1]"));
+        return element;
+    }
+
+    //Tab label popup - Cancel button
+    public WebElement btn_TabLabelPopup_Cancel(WebDriver driver){
+        element = driver.findElement(By.xpath(".//div[contains(@id,\"ui-id-\") and contains(@class,\"popup-content-details\")]/div[3]/div/input[2]"));
+        return element;
+    }
+
+    //Container for Master Control at all New Tabs
+    public List<WebElement> MasterControl_Items(WebDriver driver, int MCNo){
+        String sElementXpath = "//*[@id='frmb-" +MCNo+ "-cb-wrap']/ul/descendant::li";
+        elementList = driver.findElements(By.xpath(sElementXpath));
+        return elementList;
+    }
+
+    //Container for Page at each Tab (Destination for dropping the controls)
+    public WebElement to_Destination(WebDriver driver, int pageNo) {
+        String elementsID = "//*[@id='page-" +pageNo+ "']";
+        element = driver.findElement(By.xpath(elementsID));
+        return element;
+    }
+
+    //Label & Type of all the Elements in a form
+    public static List<WebElement> frm_AllElements(WebDriver driver, int iFormNo){
+        String sElementXpath = ".//*[@id='frmb-" +iFormNo+ "-fld-1']/descendant::li";
+        elementList = driver.findElements(By.xpath(sElementXpath));
+        return elementList;
+    }
+
+    //Labels of all the Elements in a form
+    public static List<WebElement> lbl_AllElements(WebDriver driver, int iFormNo){
+        String sElementXpath = ".//*[@id='frmb-" +iFormNo+ "-fld-1']/descendant::li/label";
+        elementList = driver.findElements(By.xpath(sElementXpath));
+        return elementList;
+    }
+
+    //Access all inner elements on clicking Edit button
+    public static List<WebElement> getInnerElements(WebElement weOuterElement){
+        elementList = weOuterElement.findElements(By.xpath("div[3]/div/div"));
+        return elementList;
+    }
+
+    //Labels of all the inner elements on clicking Edit button
+    public static WebElement getLabel_InnerElement(WebElement weOuterElement){
+        element = weOuterElement.findElement(By.xpath("label"));
+        return element;
+    }
+
+    //Edit, checkbox tick actions on all the inner elements on clicking Edit button
+    public static WebElement getElement_InnerElement(WebElement weOuterElement){
+        element = weOuterElement.findElement(By.xpath("input"));
+        return element;
+    }
+
+    //Close button of each element
+    public static WebElement btn_Close(WebElement sOuterElementXpath){
+        element = sOuterElementXpath.findElement(By.xpath("div[3]/div")).findElement(By.tagName("a"));
+        return element;
+    }
+
+    //Form Save Button
+    public static WebElement btn_Save(WebDriver driver){
+        element = driver.findElement(By.id("save-template"));
+        return element;
+    }
+
+    //Popup Save-OK button
+    public static WebElement btn_PopupOK(WebDriver driver){
+        element = driver.findElement(By.id("popup_ok"));
+        return element;
+    }
+
+    //Form Preview Button
+    public static WebElement btn_Preview(WebDriver driver){
+        element = driver.findElement(By.id("preview-template"));
+        return element;
+    }
+
+}
