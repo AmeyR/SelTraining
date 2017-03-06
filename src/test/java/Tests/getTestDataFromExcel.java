@@ -20,7 +20,7 @@ public class getTestDataFromExcel {
 
     public ArrayList<String> getTestData(String sSheetName, String TestCaseId) throws IOException {
         int iRowNum = 0, iLastRowNum, iLastColNum;
-        String sTCID;
+        String sTCID, dummy;
         
         FileInputStream fis = new FileInputStream("C:\\Users\\amey.rajapure\\Desktop\\TestData.xlsx");
         XSSFWorkbook wb = new XSSFWorkbook(fis);
